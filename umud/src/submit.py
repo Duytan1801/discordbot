@@ -44,7 +44,8 @@ def main() -> None:
     for t in ("fl_mm", "mt_mm"):
         sub = sub.merge(parts[t].rename(columns={"pred": t}), on="image_id")
     if sample:
-        order = pd.read_csv(sample)["image_id"].astype(str)
+        # Sample uses ';' separator — auto-detect delimiter.
+        order = pd.read_csv(sample, sep=None, engine="python")["image_id"].astype(str)
         sub["image_id"] = sub["image_id"].astype(str)
         missing = set(order) - set(sub["image_id"])
         if missing:
