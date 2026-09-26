@@ -58,8 +58,8 @@ def main() -> None:
         oob = ((sub[t] < lo) | (sub[t] > hi)).sum()
         print(f"{t}: range [{sub[t].min():.2f}, {sub[t].max():.2f}] "
               f"out-of-phys-range={oob}")
-    sub[["image_id", *TARGETS]].to_csv(args.out, index=False)
-    print(f"wrote {args.out} ({len(sub)} rows)")
+    sub[["image_id", *TARGETS]].to_csv(args.out, index=False, sep=";")
+    print(f"wrote {args.out} ({len(sub)} rows, ';'-separated like the sample)")
 
 
 if __name__ == "__main__":
