@@ -44,7 +44,8 @@ def main() -> None:
     for t in ("fl_mm", "mt_mm"):
         sub = sub.merge(parts[t].rename(columns={"pred": t}), on="image_id")
     if sample:
-        order = pd.read_csv(sample)["image_id"].astype(str)
+        # Sample uses ';' separator — auto-detect delimiter.
+        order = pd.read_csv(sample, sep=None, engine="python")["image_id"].astype(str)
         sub["image_id"] = sub["image_id"].astype(str)
         missing = set(order) - set(sub["image_id"])
         if missing:
@@ -57,8 +58,8 @@ def main() -> None:
         oob = ((sub[t] < lo) | (sub[t] > hi)).sum()
         print(f"{t}: range [{sub[t].min():.2f}, {sub[t].max():.2f}] "
               f"out-of-phys-range={oob}")
-    sub[["image_id", *TARGETS]].to_csv(args.out, index=False)
-    print(f"wrote {args.out} ({len(sub)} rows)")
+    sub[["image_id", *TARGETS]].to_csv(args.out, index=False, sep=";")
+    print(f"wrote {args.out} ({len(sub)} rows, ';'-separated like the sample)")
 
 
 if __name__ == "__main__":

@@ -1,15 +1,12 @@
-# UMUD Kaggle environment (tested on Kaggle notebooks, free GPU tier)
-# Install with: pip install -q -r umud/requirements-kaggle.txt
-autogluon.multimodal
-autogluon.tabular
-kaggle
-pandas
-numpy
-pillow
-matplotlib
-tqdm
-pyarrow
-scikit-learn
-scipy
-scikit-image
-opencv-python-headless
+# UMUD Kaggle environment — MINIMAL, per phase. Do NOT `pip install autogluon`
+# (the metapackage drags timeseries + extras we never use).
+#
+# Phase 0 (data/metric/EDA/geometry/ensemble/submit): NO INSTALL NEEDED.
+#   pandas, numpy, pillow, matplotlib, scipy, scikit-image,
+#   opencv-python-headless are all preinstalled on Kaggle.
+#
+# Phase A/B (AutoMM image->regression + SAM segmentation): uncomment:
+# autogluon.multimodal
+#
+# Phase C (stacking/calibration): uncomment (lightweight, seconds to install):
+# perpetual
