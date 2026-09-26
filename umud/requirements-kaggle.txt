@@ -1,0 +1,15 @@
+# UMUD Kaggle environment (tested on Kaggle notebooks, free GPU tier)
+# Install with: pip install -q -r umud/requirements-kaggle.txt
+autogluon.multimodal
+autogluon.tabular
+kaggle
+pandas
+numpy
+pillow
+matplotlib
+tqdm
+pyarrow
+scikit-learn
+scipy
+scikit-image
+opencv-python-headless

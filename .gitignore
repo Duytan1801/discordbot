@@ -1,0 +1,14 @@
+# UMUD / general
+data/
+*.tif
+*.tiff
+AutogluonModels/
+models/
+reports/
+*.ckpt
+__pycache__/
+.ipynb_checkpoints/
+.venv/
+kaggle.json
+*.csv
+!sample_*.csv
